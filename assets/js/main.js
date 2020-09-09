@@ -13,150 +13,6 @@
     });
   };
 
-
-  /* 3. MainSlider-1 */
-  function mainSlider() {
-    var BasicSlider = $('.slider-active');
-    BasicSlider.on('init', function (e, slick) {
-      var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
-      doAnimations($firstAnimatingElements);
-    });
-    BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
-      var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
-      doAnimations($animatingElements);
-    });
-    BasicSlider.slick({
-      autoplay: true,
-      autoplaySpeed: 7000,
-      dots: false,
-      fade: true,
-      arrows: false,
-      prevArrow: '<button type="button" class="slick-prev"><i class="ti-shift-left"></i></button>',
-      nextArrow: '<button type="button" class="slick-next"><i class="ti-shift-right"></i></button>',
-      responsive: [{
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-          }
-        },
-        {
-          breakpoint: 991,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          }
-        },
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          }
-        }
-      ]
-    });
-
-    function doAnimations(elements) {
-      var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      elements.each(function () {
-        var $this = $(this);
-        var $animationDelay = $this.data('delay');
-        var $animationType = 'animated ' + $this.data('animation');
-        $this.css({
-          'animation-delay': $animationDelay,
-          '-webkit-animation-delay': $animationDelay
-        });
-        $this.addClass($animationType).one(animationEndEvents, function () {
-          $this.removeClass($animationType);
-        });
-      });
-    }
-  }
-  mainSlider();
-
-
-
-  /* 4. Testimonial Active*/
-  var testimonial = $('.h1-testimonial-active');
-  if (testimonial.length) {
-    testimonial.slick({
-      dots: false,
-      infinite: true,
-      speed: 1000,
-      autoplay: false,
-      loop: true,
-      arrows: true,
-      prevArrow: '<button type="button" class="slick-prev"><i class="ti-angle-left"></i></button>',
-      nextArrow: '<button type="button" class="slick-next"><i class="ti-angle-right"></i></button>',
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      responsive: [{
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: false,
-            arrow: false
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-          }
-        }
-      ]
-    });
-  }
-
-
-  /* 5. Gallery Active */
-  var client_list = $('.completed-active');
-  if (client_list.length) {
-    client_list.owlCarousel({
-      slidesToShow: 2,
-      slidesToScroll: 1,
-      loop: true,
-      autoplay: true,
-      speed: 3000,
-      smartSpeed: 2000,
-      nav: false,
-      dots: false,
-      margin: 15,
-
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        768: {
-          items: 2
-        },
-        992: {
-          items: 2
-        },
-        1200: {
-          items: 3
-        }
-      }
-    });
-  }
-
   /* 7.  Custom Sticky Menu  */
   $(window).on('scroll', function () {
     var scroll = $(window).scrollTop();
@@ -175,8 +31,6 @@
       $(".header-sticky").addClass("sticky");
     }
   });
-
-
 
   /* 8. sildeBar scroll */
   $.scrollUp({
@@ -202,15 +56,6 @@
     mobile: false,
   }).init();
 
-  /* 11. Datepicker */
-
-  // 11. ---- Mailchimp js --------//  
-  function mailChimp() {
-    $('#mc_embed_signup').find('form').ajaxChimp();
-  }
-  mailChimp();
-
-
   // 12 Pop Up Img
   var popUp = $('.single_gallery_part, .img-pop-up');
   if (popUp.length) {
@@ -230,8 +75,6 @@
       type: 'iframe',
     });
   }
-
-
 
   /* ----------------- Other Inner page Start ------------------ */
 
@@ -339,12 +182,6 @@
     });
   }
 
-  $("#country_selector").countrySelect({
-    responsiveDropdown: true,
-    defaultCountry: "vn",
-    onlyCountries: ['vn', 'jp']
-  });
-
   // menu fixed js code
   $(window).scroll(function () {
     var window_top = $(window).scrollTop() + 1;
@@ -355,40 +192,6 @@
     }
   });
 
-  // $('.counter').counterUp({
-  //   time: 2000
-  // });
-
-  $('.slider').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    speed: 300,
-    infinite: true,
-    asNavFor: '.slider-nav-thumbnails',
-    autoplay: true,
-    pauseOnFocus: true,
-    dots: true,
-  });
-
-  $('.slider-nav-thumbnails').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '.slider',
-    focusOnSelect: true,
-    infinite: true,
-    prevArrow: false,
-    nextArrow: false,
-    centerMode: true,
-    responsive: [{
-      breakpoint: 480,
-      settings: {
-        centerMode: false,
-      }
-    }]
-  });
-
-
   // Search Toggle
   $("#search_input_box").hide();
   $("#search_1").on("click", function () {
@@ -398,12 +201,6 @@
   $("#close_search").on("click", function () {
     $('#search_input_box').slideUp(500);
   });
-
-  //------- Mailchimp js --------//  
-  function mailChimp() {
-    $('#mc_embed_signup').find('form').ajaxChimp();
-  }
-  mailChimp();
 
   //------- makeTimer js --------//  
   function makeTimer() {
@@ -586,7 +383,8 @@
 
   $('.procedure-carousel').owlCarousel({
     margin: 30,
-    nav: true,
+    nav: false,
+    dots: false,
     center: true,
     loop: false,
     responsive: {
@@ -594,11 +392,104 @@
         items: 1
       },
       600: {
-        items: 3
+        items: 2,
+        margin: 10,
       },
-      1000: {
-        items: 5
+      992: {
+        items: 3,
+        margin: 15,
+      },
+      1440: {
+        items: 4,
+        margin: 20,
+      },
+      1700: {
+        items: 4,
       }
     }
   })
+
+  $('.lang-selected').click(function (e) {
+    e.preventDefault();
+    $('.lang-dropdown').toggleClass('d-none')
+  })
+
+  var sync1 = $("#carousel-1");
+  var sync2 = $("#carousel-2");
+  var slidesPerPage = 5; //globaly define number of elements per page
+  var syncedSecondary = true;
+
+  sync1.owlCarousel({
+    items: 1,
+    slideSpeed: 2000,
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    dots: false,
+    loop: true,
+    responsiveRefreshRate: 200,
+    onChanged: syncPosition,
+  });
+
+  sync2.owlCarousel({
+    margin: 10,
+    items: 4,
+    responsive: {
+      1000: {
+        items: 4
+      }
+    },
+    dots: false,
+    nav: false,
+    smartSpeed: 200,
+    slideSpeed: 500,
+    slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
+    responsiveRefreshRate: 100,
+    onInitialized: function () {
+      sync2.find(".owl-item").eq(0).addClass("synced");
+    },
+    onChanged: syncPosition2
+  });
+
+  function syncPosition(el) {
+    //if you set loop to false, you have to restore this next line
+    //var current = el.item.index;
+
+    //if you disable loop you have to comment this block
+    var count = el.item.count - 1;
+    var current = Math.round(el.item.index - (el.item.count / 2) - .5);
+
+    if (current < 0) {
+      current = count;
+    }
+    if (current > count) {
+      current = 0;
+    }
+    //end block
+
+    sync2.find(".owl-item").removeClass("synced").eq(current).addClass("synced");
+    // var onscreen = sync2.find('.owl-item.active').length - 1;
+    // var start = sync2.find('.owl-item.active').first().index();
+    // var end = sync2.find('.owl-item.active').last().index();
+    sync2.trigger('to.owl.carousel', [current, 100, true]);
+    // if (current > end) {
+    //     sync2.trigger('to.owl.carousel', [current, 100, true]);
+    // }
+    // if (current < start) {
+    //     sync2.trigger('to.owl.carousel', [current - onscreen, 100, true]);
+    // }
+  }
+
+  function syncPosition2(el) {
+    if (syncedSecondary) {
+      var number = el.item.index;
+      sync1.trigger('to.owl.carousel', [number, 100, true]);
+    }
+  }
+
+  sync2.on("click", ".owl-item", function (e) {
+    e.preventDefault();
+    var number = $(this).index();
+    sync1.trigger('to.owl.carousel', [number, 100, true]);
+  });
 })(jQuery);
