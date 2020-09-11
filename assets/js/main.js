@@ -67,16 +67,12 @@
     });
   }
 
-
-  // 13 Pop Up img Video
   var popUp = $('.popup-video');
   if (popUp.length) {
     popUp.magnificPopup({
       type: 'iframe',
     });
   }
-
-  /* ----------------- Other Inner page Start ------------------ */
 
   $('.popup-youtube, .popup-vimeo').magnificPopup({
     // disableOn: 700,
@@ -86,92 +82,6 @@
     preloader: false,
     fixedContentPos: false
   });
-
-  var review = $('.client_review_slider');
-  if (review.length) {
-    review.owlCarousel({
-      items: 1,
-      loop: true,
-      dots: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: true,
-      dots: false,
-      navText: [" <i class='ti-angle-left'></i> ", "<i class='ti-angle-right'></i> "],
-      responsive: {
-        0: {
-          nav: false
-        },
-        768: {
-          nav: false
-        },
-        991: {
-          nav: true
-        }
-      }
-    });
-  }
-
-
-  var product_slide = $('.product_img_slide');
-  if (product_slide.length) {
-    product_slide.owlCarousel({
-      items: 1,
-      loop: true,
-      dots: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: true,
-      dots: false,
-      navText: [" <i class='ti-angle-left'></i> ", "<i class='ti-angle-right'></i> "],
-      responsive: {
-        0: {
-          nav: false
-        },
-        768: {
-          nav: false
-        },
-        991: {
-          nav: true
-        }
-      }
-    });
-  }
-
-  //product list slider
-  var product_list_slider = $('.product_list_slider');
-  if (product_list_slider.length) {
-    product_list_slider.owlCarousel({
-      items: 1,
-      loop: true,
-      dots: false,
-      autoplay: true,
-      autoplayHoverPause: true,
-      autoplayTimeout: 5000,
-      nav: true,
-      navText: ["next", "previous"],
-      smartSpeed: 1000,
-      responsive: {
-        0: {
-          margin: 15,
-          nav: false,
-          items: 1
-        },
-        600: {
-          margin: 15,
-          items: 1,
-          nav: false
-        },
-        768: {
-          margin: 30,
-          nav: true,
-          items: 1
-        }
-      }
-    });
-  }
 
   if ($('.img-gal').length > 0) {
     $('.img-gal').magnificPopup({
@@ -202,105 +112,6 @@
     $('#search_input_box').slideUp(500);
   });
 
-  //------- makeTimer js --------//  
-  function makeTimer() {
-
-    //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-    var endTime = new Date("27 Sep 2019 12:56:00 GMT+01:00");
-    endTime = (Date.parse(endTime) / 1000);
-    var now = new Date();
-    now = (Date.parse(now) / 1000);
-
-    var timeLeft = endTime - now;
-
-    var days = Math.floor(timeLeft / 86400);
-    var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
-    var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
-    var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
-
-    if (hours < "10") {
-      hours = "0" + hours;
-    }
-    if (minutes < "10") {
-      minutes = "0" + minutes;
-    }
-    if (seconds < "10") {
-      seconds = "0" + seconds;
-    }
-
-    $("#days").html("<span>Days</span>" + days);
-    $("#hours").html("<span>Hours</span>" + hours);
-    $("#minutes").html("<span>Minutes</span>" + minutes);
-    $("#seconds").html("<span>Seconds</span>" + seconds);
-
-  }
-  // click counter js
-  (function () {
-    window.inputNumber = function (el) {
-
-      var min = el.attr('min') || false;
-      var max = el.attr('max') || false;
-
-      var els = {};
-
-      els.dec = el.prev();
-      els.inc = el.next();
-
-      el.each(function () {
-        init($(this));
-      });
-
-      function init(el) {
-
-        els.dec.on('click', decrement);
-        els.inc.on('click', increment);
-
-        function decrement() {
-          var value = el[0].value;
-          value--;
-          if (!min || value >= min) {
-            el[0].value = value;
-          }
-        }
-
-        function increment() {
-          var value = el[0].value;
-          value++;
-          if (!max || value <= max) {
-            el[0].value = value++;
-          }
-        }
-      }
-    }
-  })();
-
-  inputNumber($('.input-number'));
-  setInterval(function () {
-    makeTimer();
-  }, 1000);
-
-
-  $('.select_option_dropdown').hide();
-  $(".select_option_list").click(function () {
-    $(this).parent(".select_option").children(".select_option_dropdown").slideToggle('100');
-    $(this).find(".right").toggleClass("fas fa-caret-down, fas fa-caret-up");
-  });
-
-  if ($('.new_arrival_iner').length > 0) {
-    var containerEl = document.querySelector('.new_arrival_iner');
-    var mixer = mixitup(containerEl);
-  }
-
-
-  $('.controls').on('click', function () {
-    $(this).addClass('active').siblings().removeClass('active');
-  });
-
-
-  /* ----------------- Other Inner page End ------------------ */
-
-
-
   // Modal Activation
   $('.search-switch').on('click', function () {
     $('.search-model-box').fadeIn(400);
@@ -309,20 +120,6 @@
   $('.search-close-btn').on('click', function () {
     $('.search-model-box').fadeOut(400, function () {
       $('#search-input').val('');
-    });
-  });
-
-  // Grid view and list View
-
-  $(document).ready(function () {
-    $('#list').click(function (event) {
-      event.preventDefault();
-      $('#products .item').addClass('list-group-item');
-    });
-    $('#grid').click(function (event) {
-      event.preventDefault();
-      $('#products .item').removeClass('list-group-item');
-      $('#products .item').addClass('grid-group-item');
     });
   });
 
@@ -445,11 +242,12 @@
     slideSpeed: 500,
     slideBy: slidesPerPage, //alternatively you can slide by 1, this way the active slide will stick to the first item in the second carousel
     responsiveRefreshRate: 100,
-    onInitialized: function () {
-      sync2.find(".owl-item").eq(0).addClass("synced");
-    },
     onChanged: syncPosition2
   });
+
+  sync2.on('initialized.owl.carousel', function (event) {
+    $(this).find(".owl-item").eq(0).addClass("synced");
+  })
 
   function syncPosition(el) {
     //if you set loop to false, you have to restore this next line
@@ -492,4 +290,46 @@
     var number = $(this).index();
     sync1.trigger('to.owl.carousel', [number, 100, true]);
   });
+
+  $('.foot-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    items: 1,
+    dots: true
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $('.step-carousel-1').owlCarousel({
+    loop: false,
+    margin: 10,
+    nav: true,
+    items: 1,
+    dots: false
+  });
+
+  $('.step-carousel-2').owlCarousel({
+    loop: false,
+    margin: 10,
+    nav: false,
+    items: 1,
+    dots: false,
+    animateOut: 'slideOutUp',
+    animateIn: 'slideInUp'
+  });
+
+  
+
 })(jQuery);
