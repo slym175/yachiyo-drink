@@ -1095,10 +1095,12 @@ input:focus::-moz-placeholder {
 .mobile_menu .slicknav_menu .slicknav_nav a {
     font-size: 15px;
     padding: 7px 10px 7px 5px;
+    font: normal normal 16px/18px var(--primary-font-family);
 }
 
 .mobile_menu .slicknav_menu .slicknav_nav .slicknav_item a {
-    padding: 0 !important
+    padding: 0 !important;
+    font: normal normal 16px/18px var(--primary-font-family);
 }
 
 /* end mobile menu */
@@ -1173,8 +1175,78 @@ input:focus::-moz-placeholder {
     -ms-flex-pack: center;
     justify-content: center
 }
-
 /* search */
+
+/* contact dialog */
+.contact-dialog-box {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(43, 43, 43, 0.527);
+    z-index: 99999
+}
+
+.contact-dialog-box .contact-close-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    font-size: 28px;
+    line-height: 28px;
+    top: calc(50% - 150px);
+    right: calc(50% - 285px);
+    cursor: pointer;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@media (max-width: 552px) {
+    .contact-dialog-box .contact-close-btn {
+        right: 0;
+    }
+}
+
+.contact-dialog-box .d-flex .d-flex {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font: normal normal 18px/27px var(--primary-font-family);
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: var(--secondary-color);
+}
+
+.contact-dialog-box .d-flex .d-flex span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 73px;
+    height: 73px;
+    border: 1px solid #fff;
+    border-radius: 5000px;
+    box-sizing: border-box;
+    margin-bottom: 26px;
+}
+/* end contact dialog */
 
 /* slide */
 .home-carousel .item {
